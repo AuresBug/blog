@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\FilesController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -13,22 +12,20 @@ Route::get('phpinfo', function () {
 });
 
 // Auth
-Auth::routes(['register' => false]);
+Auth::routes();
 Route::get('/auth/{driver}/redirect', [SocialiteController::class, 'redirectToProvider'])->name('google.login');
 Route::get('/auth/{driver}/callback', [SocialiteController::class, 'handleProviderCallback']);
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+// Home
+// Route::get('/', function () {return redirect()->route('home');});
+// Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+Route::view('/', 'home')->name('home');
 
 // Files Controller
 Route::get('/files/{filenName}/{group?}', [FilesController::class, 'getFile'])->name('getFile');
 
 Route::prefix('admin')->middleware('auth')->group(function () {
-
-    // Home
-    Route::get('/', function () {return redirect()->route('home');});
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     // Users
 
@@ -43,6 +40,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 Route::fallback(function () {
 
-    return redirect()->route('welcome')->with('toast_errors', 'Algo salio mal!.');
+    return redirect()->route('home')->with('toast_errors', 'Algo salio mal!.');
 
 });

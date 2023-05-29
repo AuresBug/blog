@@ -14,9 +14,9 @@ return [
     |
      */
 
-    'title'                                   => 'Proyecto Base',
+    'title'                                   => 'Blog',
     'title_prefix'                            => '',
-    'title_postfix'                           => '| ProyectoBase',
+    'title_postfix'                           => '| Blog',
 
     /*
     |--------------------------------------------------------------------------
@@ -45,7 +45,7 @@ return [
     |
      */
 
-    'logo'                                    => '<b>Proyecto</b> Base',
+    'logo'                                    => '<b>Blog</b>',
     'logo_img'                                => 'https://via.placeholder.com/50x50.png?text=PB',
     'logo_img_class'                          => 'brand-image rounded-circle elevation-3',
     'logo_img_xl'                             => null,
@@ -83,9 +83,9 @@ return [
     |
      */
 
-    'layout_topnav'                           => null,
+    'layout_topnav'                           => true,
     'layout_boxed'                            => null,
-    'layout_fixed_sidebar'                    => true,
+    'layout_fixed_sidebar'                    => null,
     'layout_fixed_navbar'                     => true,
     'layout_fixed_footer'                     => null,
     'layout_dark_mode'                        => null,
@@ -128,10 +128,10 @@ return [
     'classes_content_wrapper'                 => '',
     'classes_content_header'                  => '',
     'classes_content'                         => '',
-    'classes_sidebar'                         => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar'                         => ' sidebar-dark-primary elevation-4',
     'classes_sidebar_nav'                     => '',
     'classes_topnav'                          => 'navbar-white navbar-light',
-    'classes_topnav_nav'                      => 'navbar-expand',
+    'classes_topnav_nav'                      => 'navbar-expand-lg',
     'classes_topnav_container'                => 'container',
 
     /*
@@ -192,7 +192,7 @@ return [
     'dashboard_url'                           => 'home',
     'logout_url'                              => 'logout',
     'login_url'                               => 'login',
-    'register_url'                            => false,
+    'register_url'                            => 'register',
     'password_reset_url'                      => 'password.request',
     'password_email_url'                      => 'password.email',
     'profile_url'                             => false,
