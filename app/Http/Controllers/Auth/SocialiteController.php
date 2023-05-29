@@ -69,7 +69,7 @@ class SocialiteController extends Controller
         }
         Auth::login($social_profile->user);
 
-        return redirect('home');
+        return redirect('dashboard');
 
     }
 }

@@ -189,7 +189,7 @@ return [
      */
 
     'use_route_url'                           => true,
-    'dashboard_url'                           => 'home',
+    'dashboard_url'                           => 'welcome',
     'logout_url'                              => 'logout',
     'login_url'                               => 'login',
     'register_url'                            => 'register',
@@ -321,18 +321,32 @@ return [
         //     'url'        => '#',
         // ],
 
-        ['header' => 'settings'],
+        // ['header' => 'settings'],
+
         [
-            'text'  => 'users',
-            'can'   => 'users.index',
-            'route' => 'users.index',
-            'icon'  => 'fas fa-fw fa-users',
-        ],
-        [
-            'text'  => 'roles',
-            'can'   => 'roles.index',
-            'route' => 'roles.index',
-            'icon'  => 'fas fa-fw fa-user-shield',
+            'text'         => 'settings',
+            'can'          => 'users.sindex',
+            // 'route'        => 'users.index',
+            'icon'         => 'fas fa-fw fa-cogs',
+            'topnav_right' => true,
+            'submenu'      => [
+                [
+                    'text'         => 'users',
+                    'can'          => 'users.index',
+                    'route'        => 'users.index',
+                    'icon'         => 'fas fa-fw fa-users',
+                    'topnav_right' => true,
+
+                ],
+                [
+                    'text'  => 'roles',
+                    'can'   => 'roles.index',
+                    'route' => 'roles.index',
+                    'icon'  => 'fas fa-fw fa-user-shield',
+
+                ],
+            ],
+
         ],
 
     ],

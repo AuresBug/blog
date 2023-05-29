@@ -12,20 +12,27 @@ Route::get('phpinfo', function () {
 });
 
 // Auth
-Auth::routes();
+Auth::routes(['verify' => true]);
 Route::get('/auth/{driver}/redirect', [SocialiteController::class, 'redirectToProvider'])->name('google.login');
 Route::get('/auth/{driver}/callback', [SocialiteController::class, 'handleProviderCallback']);
 
-// Home
-// Route::get('/', function () {return redirect()->route('home');});
-// Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::view('/', 'welcome')->name('welcome');
 
-Route::view('/', 'home')->name('home');
+// Route::get('/home', function () {return redirect()->route('welcome');});
+Route::get('/dashboard', function () {return redirect()->route('dashboard');});
 
 // Files Controller
 Route::get('/files/{filenName}/{group?}', [FilesController::class, 'getFile'])->name('getFile');
 
-Route::prefix('admin')->middleware('auth')->group(function () {
+Route::prefix('admin')->middleware('auth', 'verified')->group(function () {
+
+    // Home
+
+    Route::get('/', function () {return redirect()->route('dashboard');})->name('home');
+    // Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
+
+    // Route::get('/', function () {return redirect()->route('home');});
 
     // Users
 
@@ -40,6 +47,6 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
 Route::fallback(function () {
 
-    return redirect()->route('home')->with('toast_errors', 'Algo salio mal!.');
+    return redirect()->route('welcome')->with('toast_errors', 'Algo salio mal!.');
 
 });

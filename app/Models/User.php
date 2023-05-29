@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\EnumRoles;
 use App\Models\SocialProfile;
 use Auresbug\Media\HasMedia;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -13,7 +14,7 @@ use Laravel\Sanctum\HasApiTokens;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\Permission\Traits\HasRoles;
 
-class User extends Authenticatable implements Auditable
+class User extends Authenticatable implements Auditable, MustVerifyEmail
 {
 
     use \OwenIt\Auditing\Auditable;
