@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Auth\SocialiteController;
 use App\Http\Controllers\FilesController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +18,8 @@ Auth::routes(['verify' => true]);
 Route::get('/auth/{driver}/redirect', [SocialiteController::class, 'redirectToProvider'])->name('google.login');
 Route::get('/auth/{driver}/callback', [SocialiteController::class, 'handleProviderCallback']);
 
-Route::view('/', 'welcome')->name('welcome');
+// HomeController
+Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 
 // Route::get('/home', function () {return redirect()->route('welcome');});
 Route::get('/dashboard', function () {return redirect()->route('dashboard');});
@@ -42,6 +45,10 @@ Route::prefix('admin')->middleware('auth', 'verified')->group(function () {
     // Roles
     Route::get('roles/get-index-table', [RoleController::class, 'getIndexTable'])->name('roles.getIndexTable');
     Route::resource('roles', RoleController::class);
+
+    // Posts
+    Route::get('posts/get-index-table', [PostController::class, 'getIndexTable'])->name('posts.getIndexTable');
+    Route::resource('posts', PostController::class);
 
 });
 

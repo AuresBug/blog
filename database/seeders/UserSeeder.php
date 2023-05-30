@@ -22,8 +22,9 @@ class UserSeeder extends Seeder
                 'name' => EnumRoles::SUDO,
             ],
             [
-                'email'    => 'sudo@sudo.com',
-                'password' => bcrypt('password'),
+                'email'             => 'sudo@sudo.com',
+                'password'          => bcrypt('password'),
+                'email_verified_at' => now(),
             ]
         );
 
@@ -35,8 +36,9 @@ class UserSeeder extends Seeder
                 'name' => EnumRoles::ADMIN,
             ],
             [
-                'email'    => 'admin@admin.com',
-                'password' => bcrypt('password'),
+                'email'             => 'admin@admin.com',
+                'password'          => bcrypt('password'),
+                'email_verified_at' => now(),
             ]
         );
 
@@ -48,8 +50,9 @@ class UserSeeder extends Seeder
                 'name' => EnumRoles::USER,
             ],
             [
-                'email'    => 'user@user.com',
-                'password' => bcrypt('password'),
+                'email'             => 'user@user.com',
+                'password'          => bcrypt('password'),
+                'email_verified_at' => now(),
             ]
         );
 

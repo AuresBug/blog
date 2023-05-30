@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
-<!-- Active URL: http://base.localhost/sql/ -->
+<!-- Active URL: http://blog.localhost/sql/ -->
 <sql>
 <datatypes db="mysql">
 
@@ -72,7 +72,7 @@
 
 	</group>
 
-</datatypes><table x="10" y="10" name="roles">
+</datatypes><table x="779" y="186" name="permissions">
 <row name="id" null="0" autoincrement="1">
 <datatype>BIGINT(20)</datatype>
 </row>
@@ -88,56 +88,181 @@
 <row name="updated_at" null="1" autoincrement="0">
 <datatype>TIMESTAMP</datatype>
 <default>NULL</default></row>
-<key type="PRIMARY" name="PRIMARY">
-<part>id</part>
-</key>
-<key type="UNIQUE" name="roles_name_guard_name_unique">
-<part>name</part>
-<part>guard_name</part>
-</key>
-</table>
-<table x="0" y="219" name="permissions">
-<row name="id" null="0" autoincrement="1">
-<datatype>BIGINT(20)</datatype>
-</row>
-<row name="name" null="0" autoincrement="0">
-<datatype>VARCHAR(255)</datatype>
-</row>
-<row name="guard_name" null="0" autoincrement="0">
-<datatype>VARCHAR(255)</datatype>
-</row>
-<row name="created_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<row name="updated_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="PRIMARY">
-<part>id</part>
-</key>
 <key type="UNIQUE" name="permissions_name_guard_name_unique">
 <part>name</part>
 <part>guard_name</part>
 </key>
+<key type="PRIMARY" name="PRIMARY">
+<part>id</part>
+</key>
 </table>
-<table x="208" y="145" name="role_has_permissions">
+<table x="503" y="51" name="role_has_permissions">
 <row name="permission_id" null="0" autoincrement="0">
 <datatype>BIGINT(20)</datatype>
+<relation table="permissions" row="id" />
+<relation table="permissions" row="id" />
+<relation table="permissions" row="id" />
 <relation table="permissions" row="id" />
 </row>
 <row name="role_id" null="0" autoincrement="0">
 <datatype>BIGINT(20)</datatype>
 <relation table="roles" row="id" />
+<relation table="roles" row="id" />
+<relation table="roles" row="id" />
+<relation table="roles" row="id" />
 </row>
-<key type="INDEX" name="role_has_permissions_role_id_foreign">
-<part>role_id</part>
-</key>
 <key type="PRIMARY" name="PRIMARY">
 <part>permission_id</part>
 <part>role_id</part>
 </key>
+<key type="INDEX" name="role_has_permissions_role_id_foreign">
+<part>role_id</part>
+</key>
 </table>
-<table x="574" y="8" name="media">
+<table x="781" y="7" name="roles">
+<row name="id" null="0" autoincrement="1">
+<datatype>BIGINT(20)</datatype>
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="guard_name" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="UNIQUE" name="roles_name_guard_name_unique">
+<part>name</part>
+<part>guard_name</part>
+</key>
+<key type="PRIMARY" name="PRIMARY">
+<part>id</part>
+</key>
+</table>
+<table x="23" y="114" name="users">
+<row name="id" null="0" autoincrement="1">
+<datatype>BIGINT(20)</datatype>
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="email" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="email_verified_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="password" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="remember_token" null="1" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>NULL</default></row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="deleted_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="UNIQUE" name="users_email_unique">
+<part>email</part>
+</key>
+<key type="PRIMARY" name="PRIMARY">
+<part>id</part>
+</key>
+</table>
+<table x="1018" y="450" name="mediables">
+<row name="media_id" null="0" autoincrement="0">
+<datatype>BIGINT(20)</datatype>
+<relation table="media" row="id" />
+<relation table="media" row="id" />
+<relation table="media" row="id" />
+<relation table="media" row="id" />
+</row>
+<row name="mediable_id" null="0" autoincrement="0">
+<datatype>BIGINT(20)</datatype>
+</row>
+<row name="mediable_type" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="group" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<key type="INDEX" name="mediables_mediable_id_index">
+<part>mediable_id</part>
+</key>
+<key type="INDEX" name="mediables_media_id_index">
+<part>media_id</part>
+</key>
+</table>
+<table x="266" y="17" name="social_profiles">
+<row name="id" null="0" autoincrement="1">
+<datatype>BIGINT(20)</datatype>
+</row>
+<row name="user_id" null="0" autoincrement="0">
+<datatype>BIGINT(20)</datatype>
+<relation table="users" row="id" />
+<relation table="users" row="id" />
+<relation table="users" row="id" />
+<relation table="users" row="id" />
+</row>
+<row name="social_id" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="social_name" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="social_avatar" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="deleted_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="INDEX" name="social_profiles_user_id_foreign">
+<part>user_id</part>
+</key>
+<key type="PRIMARY" name="PRIMARY">
+<part>id</part>
+</key>
+</table>
+<table x="907" y="10" name="model_has_roles">
+<row name="role_id" null="0" autoincrement="0">
+<datatype>BIGINT(20)</datatype>
+<relation table="roles" row="id" />
+<relation table="roles" row="id" />
+<relation table="roles" row="id" />
+<relation table="roles" row="id" />
+</row>
+<row name="model_type" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="model_id" null="0" autoincrement="0">
+<datatype>BIGINT(20)</datatype>
+</row>
+<key type="INDEX" name="model_has_roles_model_id_model_type_index">
+<part>model_id</part>
+<part>model_type</part>
+</key>
+<key type="PRIMARY" name="PRIMARY">
+<part>role_id</part>
+<part>model_id</part>
+<part>model_type</part>
+</key>
+</table>
+<table x="868" y="345" name="media">
 <row name="id" null="0" autoincrement="1">
 <datatype>BIGINT(20)</datatype>
 </row>
@@ -166,51 +291,12 @@
 <part>id</part>
 </key>
 </table>
-<table x="209" y="19" name="model_has_roles">
-<row name="role_id" null="0" autoincrement="0">
-<datatype>BIGINT(20)</datatype>
-<relation table="roles" row="id" />
-</row>
-<row name="model_type" null="0" autoincrement="0">
-<datatype>VARCHAR(255)</datatype>
-</row>
-<row name="model_id" null="0" autoincrement="0">
-<datatype>BIGINT(20)</datatype>
-</row>
-<key type="PRIMARY" name="PRIMARY">
-<part>role_id</part>
-<part>model_id</part>
-<part>model_type</part>
-</key>
-<key type="INDEX" name="model_has_roles_model_id_model_type_index">
-<part>model_id</part>
-<part>model_type</part>
-</key>
-</table>
-<table x="707" y="10" name="mediables">
-<row name="media_id" null="0" autoincrement="0">
-<datatype>BIGINT(20)</datatype>
-<relation table="media" row="id" />
-</row>
-<row name="mediable_id" null="0" autoincrement="0">
-<datatype>BIGINT(20)</datatype>
-</row>
-<row name="mediable_type" null="0" autoincrement="0">
-<datatype>VARCHAR(255)</datatype>
-</row>
-<row name="group" null="0" autoincrement="0">
-<datatype>VARCHAR(255)</datatype>
-</row>
-<key type="INDEX" name="mediables_media_id_index">
-<part>media_id</part>
-</key>
-<key type="INDEX" name="mediables_mediable_id_index">
-<part>mediable_id</part>
-</key>
-</table>
-<table x="214" y="249" name="model_has_permissions">
+<table x="497" y="201" name="model_has_permissions">
 <row name="permission_id" null="0" autoincrement="0">
 <datatype>BIGINT(20)</datatype>
+<relation table="permissions" row="id" />
+<relation table="permissions" row="id" />
+<relation table="permissions" row="id" />
 <relation table="permissions" row="id" />
 </row>
 <row name="model_type" null="0" autoincrement="0">
@@ -219,128 +305,86 @@
 <row name="model_id" null="0" autoincrement="0">
 <datatype>BIGINT(20)</datatype>
 </row>
+<key type="INDEX" name="model_has_permissions_model_id_model_type_index">
+<part>model_id</part>
+<part>model_type</part>
+</key>
 <key type="PRIMARY" name="PRIMARY">
 <part>permission_id</part>
 <part>model_id</part>
 <part>model_type</part>
 </key>
-<key type="INDEX" name="model_has_permissions_model_id_model_type_index">
-<part>model_id</part>
-<part>model_type</part>
-</key>
 </table>
-<table x="251" y="397" name="users">
+<table x="284" y="261" name="posts">
 <row name="id" null="0" autoincrement="1">
 <datatype>BIGINT(20)</datatype>
 </row>
-<row name="name" null="0" autoincrement="0">
+<row name="title" null="0" autoincrement="0">
 <datatype>VARCHAR(255)</datatype>
 </row>
+<row name="slug" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="excerpt" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="body" null="1" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+<default>NULL</default></row>
+<row name="status" null="0" autoincrement="0">
+<datatype>VARCHAR(20)</datatype>
+<default>'DRAFT'</default></row>
+<row name="created_by" null="0" autoincrement="0">
+<datatype>BIGINT(20)</datatype>
+<relation table="users" row="id" />
+<relation table="users" row="id" />
+</row>
+<row name="created_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="updated_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<row name="deleted_at" null="1" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>NULL</default></row>
+<key type="UNIQUE" name="posts_slug_unique">
+<part>slug</part>
+</key>
+<key type="INDEX" name="posts_name_index">
+<part>title</part>
+</key>
+<key type="INDEX" name="posts_body_index">
+<part>body</part>
+</key>
+<key type="PRIMARY" name="PRIMARY">
+<part>id</part>
+</key>
+<key type="INDEX" name="posts_created_by_foreign">
+<part>created_by</part>
+</key>
+<key type="INDEX" name="posts_excerpt_index">
+<part>excerpt</part>
+</key>
+<key type="INDEX" name="posts_status_index">
+<part>status</part>
+</key>
+</table>
+<table x="1167" y="428" name="password_resets">
 <row name="email" null="0" autoincrement="0">
 <datatype>VARCHAR(255)</datatype>
 </row>
-<row name="email_verified_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<row name="password" null="0" autoincrement="0">
+<row name="token" null="0" autoincrement="0">
 <datatype>VARCHAR(255)</datatype>
 </row>
-<row name="remember_token" null="1" autoincrement="0">
-<datatype>VARCHAR(100)</datatype>
-<default>NULL</default></row>
 <row name="created_at" null="1" autoincrement="0">
 <datatype>TIMESTAMP</datatype>
 <default>NULL</default></row>
-<row name="updated_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<row name="deleted_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="PRIMARY">
-<part>id</part>
-</key>
-<key type="UNIQUE" name="users_email_unique">
+<key type="INDEX" name="password_resets_email_index">
 <part>email</part>
 </key>
 </table>
-<table x="23" y="401" name="social_profiles">
-<row name="id" null="0" autoincrement="1">
-<datatype>BIGINT(20)</datatype>
-</row>
-<row name="user_id" null="0" autoincrement="0">
-<datatype>BIGINT(20)</datatype>
-<relation table="users" row="id" />
-</row>
-<row name="social_id" null="0" autoincrement="0">
-<datatype>VARCHAR(255)</datatype>
-</row>
-<row name="social_name" null="0" autoincrement="0">
-<datatype>VARCHAR(255)</datatype>
-</row>
-<row name="social_avatar" null="0" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-</row>
-<row name="created_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<row name="updated_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<row name="deleted_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<key type="PRIMARY" name="PRIMARY">
-<part>id</part>
-</key>
-<key type="INDEX" name="social_profiles_user_id_foreign">
-<part>user_id</part>
-</key>
-</table>
-<table x="405" y="8" name="migrations">
-<row name="id" null="0" autoincrement="1">
-<datatype>INT(10)</datatype>
-</row>
-<row name="migration" null="0" autoincrement="0">
-<datatype>VARCHAR(255)</datatype>
-</row>
-<row name="batch" null="0" autoincrement="0">
-<datatype>INT(11)</datatype>
-</row>
-<key type="PRIMARY" name="PRIMARY">
-<part>id</part>
-</key>
-</table>
-<table x="438" y="240" name="failed_jobs">
-<row name="id" null="0" autoincrement="1">
-<datatype>BIGINT(20)</datatype>
-</row>
-<row name="uuid" null="0" autoincrement="0">
-<datatype>VARCHAR(255)</datatype>
-</row>
-<row name="connection" null="0" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-</row>
-<row name="queue" null="0" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-</row>
-<row name="payload" null="0" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-</row>
-<row name="exception" null="0" autoincrement="0">
-<datatype>MEDIUMTEXT</datatype>
-</row>
-<row name="failed_at" null="0" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>'current_timestamp()'</default></row>
-<key type="PRIMARY" name="PRIMARY">
-<part>id</part>
-</key>
-<key type="UNIQUE" name="failed_jobs_uuid_unique">
-<part>uuid</part>
-</key>
-</table>
-<table x="1036" y="2" name="personal_access_tokens">
+<table x="1006" y="163" name="personal_access_tokens">
 <row name="id" null="0" autoincrement="1">
 <datatype>BIGINT(20)</datatype>
 </row>
@@ -368,32 +412,32 @@
 <row name="updated_at" null="1" autoincrement="0">
 <datatype>TIMESTAMP</datatype>
 <default>NULL</default></row>
-<key type="INDEX" name="personal_access_tokens_tokenable_type_tokenable_id_index">
-<part>tokenable_type</part>
-<part>tokenable_id</part>
+<key type="UNIQUE" name="personal_access_tokens_token_unique">
+<part>token</part>
 </key>
 <key type="PRIMARY" name="PRIMARY">
 <part>id</part>
 </key>
-<key type="UNIQUE" name="personal_access_tokens_token_unique">
-<part>token</part>
+<key type="INDEX" name="personal_access_tokens_tokenable_type_tokenable_id_index">
+<part>tokenable_type</part>
+<part>tokenable_id</part>
 </key>
 </table>
-<table x="853" y="14" name="password_resets">
-<row name="email" null="0" autoincrement="0">
+<table x="1084" y="41" name="migrations">
+<row name="id" null="0" autoincrement="1">
+<datatype>INT(10)</datatype>
+</row>
+<row name="migration" null="0" autoincrement="0">
 <datatype>VARCHAR(255)</datatype>
 </row>
-<row name="token" null="0" autoincrement="0">
-<datatype>VARCHAR(255)</datatype>
+<row name="batch" null="0" autoincrement="0">
+<datatype>INT(11)</datatype>
 </row>
-<row name="created_at" null="1" autoincrement="0">
-<datatype>TIMESTAMP</datatype>
-<default>NULL</default></row>
-<key type="INDEX" name="password_resets_email_index">
-<part>email</part>
+<key type="PRIMARY" name="PRIMARY">
+<part>id</part>
 </key>
 </table>
-<table x="910" y="144" name="audits">
+<table x="1224" y="40" name="audits">
 <row name="id" null="0" autoincrement="1">
 <datatype>BIGINT(20)</datatype>
 </row>
@@ -436,16 +480,45 @@
 <row name="updated_at" null="1" autoincrement="0">
 <datatype>TIMESTAMP</datatype>
 <default>NULL</default></row>
-<key type="PRIMARY" name="PRIMARY">
-<part>id</part>
+<key type="INDEX" name="audits_auditable_type_auditable_id_index">
+<part>auditable_type</part>
+<part>auditable_id</part>
 </key>
 <key type="INDEX" name="audits_user_id_user_type_index">
 <part>user_id</part>
 <part>user_type</part>
 </key>
-<key type="INDEX" name="audits_auditable_type_auditable_id_index">
-<part>auditable_type</part>
-<part>auditable_id</part>
+<key type="PRIMARY" name="PRIMARY">
+<part>id</part>
+</key>
+</table>
+<table x="1016" y="603" name="failed_jobs">
+<row name="id" null="0" autoincrement="1">
+<datatype>BIGINT(20)</datatype>
+</row>
+<row name="uuid" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+</row>
+<row name="connection" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="queue" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="payload" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="exception" null="0" autoincrement="0">
+<datatype>MEDIUMTEXT</datatype>
+</row>
+<row name="failed_at" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_timestamp()'</default></row>
+<key type="UNIQUE" name="failed_jobs_uuid_unique">
+<part>uuid</part>
+</key>
+<key type="PRIMARY" name="PRIMARY">
+<part>id</part>
 </key>
 </table>
 </sql>

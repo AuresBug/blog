@@ -6,7 +6,6 @@ use App\Enums\EnumRoles;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
-use Spatie\Permission\PermissionRegistrar;
 
 class RolesAndPermissionsSeeder extends Seeder
 {
@@ -23,6 +22,7 @@ class RolesAndPermissionsSeeder extends Seeder
         $permissions = [
             'users' => ['index', 'create', 'show', 'edit', 'destroy'],
             'roles' => ['index', 'create', 'show', 'edit', 'destroy'],
+            'posts' => ['index', 'create', 'show', 'edit', 'destroy'],
         ];
 
         foreach ($permissions as $model => $methods) {
@@ -33,8 +33,14 @@ class RolesAndPermissionsSeeder extends Seeder
             }
         }
 
+        // Super Admin
         Role::firstOrCreate(['name' => EnumRoles::SUDO]);
+
+        // Admin
         Role::firstOrCreate(['name' => EnumRoles::ADMIN]);
+
+        // User
         Role::firstOrCreate(['name' => EnumRoles::USER]);
+
     }
 }

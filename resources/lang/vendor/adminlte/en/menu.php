@@ -18,4 +18,6 @@ return [
     'information'      => 'Information',
     'settings'         => 'SETTINGS',
     'roles'            => 'Roles',
+    'users'            => 'Usuarios',
+    'posts'            => 'My posts',
 ];

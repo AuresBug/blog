@@ -86,7 +86,7 @@ return [
     'layout_topnav'                           => true,
     'layout_boxed'                            => null,
     'layout_fixed_sidebar'                    => null,
-    'layout_fixed_navbar'                     => true,
+    'layout_fixed_navbar'                     => null,
     'layout_fixed_footer'                     => null,
     'layout_dark_mode'                        => null,
 
@@ -125,7 +125,7 @@ return [
     'classes_body'                            => 'text-sm',
     'classes_brand'                           => '',
     'classes_brand_text'                      => '',
-    'classes_content_wrapper'                 => '',
+    'classes_content_wrapper'                 => 'pb-5',
     'classes_content_header'                  => '',
     'classes_content'                         => '',
     'classes_sidebar'                         => ' sidebar-dark-primary elevation-4',
@@ -325,17 +325,16 @@ return [
 
         [
             'text'         => 'settings',
-            'can'          => 'users.sindex',
+            'can'          => ['users.index', 'roles.index'],
             // 'route'        => 'users.index',
             'icon'         => 'fas fa-fw fa-cogs',
             'topnav_right' => true,
             'submenu'      => [
                 [
-                    'text'         => 'users',
-                    'can'          => 'users.index',
-                    'route'        => 'users.index',
-                    'icon'         => 'fas fa-fw fa-users',
-                    'topnav_right' => true,
+                    'text'  => 'users',
+                    'can'   => 'users.index',
+                    'route' => 'users.index',
+                    'icon'  => 'fas fa-fw fa-users',
 
                 ],
                 [
@@ -343,10 +342,15 @@ return [
                     'can'   => 'roles.index',
                     'route' => 'roles.index',
                     'icon'  => 'fas fa-fw fa-user-shield',
-
                 ],
             ],
 
+        ],
+        [
+            'text'  => 'posts',
+            // 'can'   => 'roles.index',
+            'route' => 'posts.index',
+            'icon'  => 'fas fa-fw fa-star',
         ],
 
     ],
