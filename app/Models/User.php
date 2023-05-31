@@ -6,6 +6,7 @@ use App\Enums\EnumRoles;
 use App\Models\SocialProfile;
 use Auresbug\Media\HasMedia;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -18,7 +19,7 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail
 {
 
     use \OwenIt\Auditing\Auditable;
-    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, HasMedia;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, SoftDeletes, HasMedia, HasUuids;
 
     /**
      * The attributes that are mass assignable.
@@ -56,6 +57,28 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail
     protected $with = [
         'media',
     ];
+
+/* -------------------------------------------------------------------------- */
+/*                                  Personal                                  */
+/* -------------------------------------------------------------------------- */
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'uuid';
+    }
+
+    /**
+     * Get the columns that should receive a unique identifier.
+     *
+     * @return array<int, string>
+     */
+    public function uniqueIds(): array
+    {
+        return ['uuid'];
+    }
 
     public function avatar()
     {
@@ -147,6 +170,6 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail
      */
     public static function laratablesAdditionalColumns()
     {
-        return ['name'];
+        return ['name', 'uuid'];
     }
 }
