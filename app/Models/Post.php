@@ -20,6 +20,14 @@ class Post extends Model implements Auditable
 /* -------------------------------------------------------------------------- */
 
     /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
+    {
+        return 'slug';
+    }
+
+    /**
      * The "booted" method of the model.
      *
      * @return void
@@ -92,7 +100,7 @@ class Post extends Model implements Auditable
      */
     public static function laratablesAdditionalColumns()
     {
-        return ['title'];
+        return ['title', 'slug'];
     }
 
 }
