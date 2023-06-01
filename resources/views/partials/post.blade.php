@@ -7,7 +7,10 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">{{ $post->title }}</h5>
+        <a class="btn btn-link" href="{{ route('posts.public', $post) }}" role="button">
+          <h5 class="card-title">{{ $post->title }}</h5>
+        </a>
+
         <p class="card-text">
           {{ $post->excerpt }}
           <br>
