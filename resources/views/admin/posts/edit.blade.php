@@ -34,7 +34,7 @@
 
           @include('admin.posts.includes.form')
 
-          @include('share.buttons.submit_cancel', ['url' => route('posts.index')])
+
 
           {!! Form::close() !!}
         </div>

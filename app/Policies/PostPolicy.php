@@ -58,7 +58,6 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-
         return $user->can('posts.edit') && $post->created_by == $user->id;
         //
     }

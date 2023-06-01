@@ -16,21 +16,22 @@
 @stop
 
 @section('content')
+
+
   <div class="row">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-body">
-          {!! Form::open(['method' => 'POST', 'route' => 'posts.store', 'class' => 'form-horizontal']) !!}
+    <div class="col-md-12">
+      {!! Form::open(['method' => 'POST', 'route' => 'posts.store', 'class' => 'form-horizontal', 'files' => true]) !!}
 
-          @include('admin.posts.includes.form')
 
-          @include('share.buttons.submit_cancel', ['url' => route('posts.index')])
+      @include('admin.posts.includes.form')
 
-          {!! Form::close() !!}
-        </div>
-      </div>
+
+
+
+      {!! Form::close() !!}
     </div>
   </div>
+
 @stop
 
 @section('plugins.duallistbox', true)

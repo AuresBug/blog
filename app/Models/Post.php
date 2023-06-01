@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\EnumPostStatuses;
+use Auresbug\Media\HasMedia;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,7 +13,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 
 class Post extends Model implements Auditable
 {
-    use HasFactory, \OwenIt\Auditing\Auditable , SoftDeletes;
+    use HasFactory, \OwenIt\Auditing\Auditable , SoftDeletes, HasMedia;
     //
 
 /* -------------------------------------------------------------------------- */
@@ -32,7 +33,7 @@ class Post extends Model implements Auditable
      *
      * @var array
      */
-    protected $guarded = [];
+    protected $guarded = ['image'];
 
     /**
      * The "booted" method of the model.
@@ -139,7 +140,7 @@ class Post extends Model implements Auditable
      */
     public static function laratablesAdditionalColumns()
     {
-        return ['title', 'slug', 'created_at'];
+        return ['title', 'slug', 'created_at', 'created_by'];
     }
 
 }
