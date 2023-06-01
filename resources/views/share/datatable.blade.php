@@ -12,9 +12,10 @@
         order: [
           {!! $order ?? "[0, 'desc']" !!}
         ],
-        columns: [{
-            name: 'id'
-          },
+        columns: [
+          //     {
+          //     name: 'id'
+          //   },
           @include('share.fields_datatables')
         ],
       });

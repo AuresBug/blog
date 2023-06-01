@@ -8,6 +8,14 @@
     <div class="col-auto">
       <h1 class="m-0 text-dark">{{ __('Edit post') }}</h1>
     </div>
+    @if ($post->status == \App\Enums\EnumPostStatuses::DRAFT->value)
+      @can('update', $post)
+        <div class="col-auto ml">
+          @include('share.buttons.preview', ['url' => route('posts.preview', $post)])
+        </div>
+      @endcan
+    @endif
+
     @can('delete', $post)
       <div class="col-auto ml-auto">
         @include('share.buttons.destroy', ['url' => route('posts.destroy', $post)])

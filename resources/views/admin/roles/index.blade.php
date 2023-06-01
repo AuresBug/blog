@@ -26,7 +26,7 @@
           <table class="table table-hover table-sm" id="roles-table">
             <thead>
               <tr>
-                <th>&nbsp;</th>
+                {{-- <th>&nbsp;</th> --}}
                 <th>{{ __('Name') }}</th>
                 <th>&nbsp;</th>
               </tr>

@@ -36,6 +36,10 @@ class PostController extends Controller
      */
     public function getIndexTable()
     {
+
+        $user = auth()->user();
+        $post = $user->posts;
+
         $this->authorize('viewAny', Post::class);
 
         return Laratables::recordsOf(Post::class);
@@ -123,4 +127,31 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->with('toast_success', 'Registro eliminado.');
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int                         $id
+     * @return \Illuminate\Http\Response
+     */
+    function public ($post) {
+
+        $post = Post::public ()
+            ->whereSlug($post)
+            ->firstOrFail();
+
+        return view('admin.posts.show', compact('post'));
+    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int                         $id
+     * @return \Illuminate\Http\Response
+     */
+    function preview (Post $post) {
+
+
+        return view('admin.posts.preview', compact('post'));
+    }
+
 }

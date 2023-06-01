@@ -9,7 +9,7 @@
         <p class="card-text">
           {{ $post->excerpt }}
           <br>
-          <a class="btn btn-link" href="#" role="button">{{ __('Read more...') }}</a>
+          <a class="btn btn-link" href="{{ route('posts.public', $post) }}" role="button">{{ __('Read more...') }}</a>
         </p>
 
         <p class="card-text"><small class="text-muted">Last updated {{ $post->created_at->diffForHumans() }}</small></p>

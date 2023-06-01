@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function welcome()
     {
 
-        $posts = Post::withoutGlobalScope('myPost')->published()->latest()->paginate();
+        $posts = Post::public ()->latest()->paginate();
 
         return view('welcome', compact('posts'));
     }

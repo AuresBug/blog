@@ -19,7 +19,7 @@ Route::get('/auth/{driver}/redirect', [SocialiteController::class, 'redirectToPr
 Route::get('/auth/{driver}/callback', [SocialiteController::class, 'handleProviderCallback']);
 
 // HomeController
-Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/', [HomeController::class, 'welcome'])->name('home');
 
 // Route::get('/home', function () {return redirect()->route('welcome');});
 Route::get('/dashboard', function () {return redirect()->route('dashboard');});
@@ -31,7 +31,7 @@ Route::prefix('admin')->middleware('auth', 'verified')->group(function () {
 
     // Home
 
-    Route::get('/', function () {return redirect()->route('dashboard');})->name('home');
+    Route::get('/', function () {return redirect()->route('dashboard');})->name('admin');
     // Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
     Route::view('/dashboard', 'dashboard')->name('dashboard');
 
@@ -50,10 +50,15 @@ Route::prefix('admin')->middleware('auth', 'verified')->group(function () {
     Route::get('posts/get-index-table', [PostController::class, 'getIndexTable'])->name('posts.getIndexTable');
     Route::resource('posts', PostController::class);
 
+    Route::get('posts/{post}/preview', [PostController::class, 'preview'])->name('posts.preview');
+
 });
+
+// Public
+Route::get('{post}', [PostController::class, 'public'])->name('posts.public');
 
 Route::fallback(function () {
 
-    return redirect()->route('welcome')->with('toast_errors', 'Algo salio mal!.');
+    return redirect()->route('home')->with('toast_errors', 'Algo salio mal!.');
 
 });

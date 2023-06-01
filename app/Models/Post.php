@@ -28,6 +28,13 @@ class Post extends Model implements Auditable
     }
 
     /**
+     * The attributes that aren't mass assignable.
+     *
+     * @var array
+     */
+    protected $guarded = [];
+
+    /**
      * The "booted" method of the model.
      *
      * @return void
@@ -55,13 +62,6 @@ class Post extends Model implements Auditable
         });
     }
 
-/**
- * The attributes that aren't mass assignable.
- *
- * @var array
- */
-    protected $guarded = [];
-
     /**
      * Scope a query to only include published posts
      *
@@ -71,6 +71,31 @@ class Post extends Model implements Auditable
     public function scopePublished($query)
     {
         return $query->where('status', EnumPostStatuses::PUBLISHED);
+    }
+
+    /**
+     * Scope a query to only include public post
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder   $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopePublic($query)
+    {
+        return $query->withoutGlobalScope('myPost')
+            ->published()
+            ->orWhere('created_by', optional(auth()->user())->id);
+    }
+
+/* -------------------------------------------------------------------------- */
+/*                                Relationships                               */
+/* -------------------------------------------------------------------------- */
+
+    /**
+     * @return mixed
+     */
+    public function owner()
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
     }
 
 /* -------------------------------------------------------------------------- */
@@ -85,12 +110,26 @@ class Post extends Model implements Auditable
         return view('admin.posts.includes.index_action', compact('post'))->render();
     }
 
+    //  title
+
     /**
      * @param $post
      */
     public static function laratablesCustomTitle($post)
     {
         return view('admin.posts.includes.index_title', compact('post'))->render();
+    }
+
+    // created_at
+
+    /**
+     * @param $post
+     */
+    public static function laratablesCustomCreatedAt($post)
+    {
+        // return view('admin.posts.includes.index_created_at', compact('post'))->render();
+
+        return $post->created_at->diffForHumans();
     }
 
     /**
@@ -100,7 +139,7 @@ class Post extends Model implements Auditable
      */
     public static function laratablesAdditionalColumns()
     {
-        return ['title', 'slug'];
+        return ['title', 'slug', 'created_at'];
     }
 
 }
