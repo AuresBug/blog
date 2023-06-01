@@ -32,14 +32,15 @@
 
   {{-- Posts --}}
   <div class="row pt-4 ">
-    <div class="col-md-9">
+    <div class="col-md-10">
 
+      {{-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 "> --}}
       @forelse ($posts as $post)
         @include('partials.post')
       @empty
         @include('partials.post-empty')
       @endforelse
-
+      {{-- </div> --}}
       {{ $posts->links() }}
 
     </div>

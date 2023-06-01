@@ -20,5 +20,6 @@ return [
     'roles'            => 'Roles',
     'users'            => 'Usuarios',
     'posts'            => 'Mis entradas',
+    'new-post'         => 'Crear nueva entrada',
 
 ];

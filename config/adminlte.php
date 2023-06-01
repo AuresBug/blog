@@ -352,6 +352,12 @@ return [
             'route' => 'posts.index',
             'icon'  => 'fas fa-fw fa-star',
         ],
+        [
+            'text'  => 'new-post',
+            // 'can'   => 'roles.index',
+            'route' => 'posts.create',
+            'icon'  => 'fas fa-fw fa-plus',
+        ],
 
     ],
 
