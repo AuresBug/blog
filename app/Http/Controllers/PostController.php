@@ -39,9 +39,6 @@ class PostController extends Controller
     public function getIndexTable()
     {
 
-        $user = auth()->user();
-        $post = $user->posts;
-
         $this->authorize('viewAny', Post::class);
 
         return Laratables::recordsOf(Post::class);

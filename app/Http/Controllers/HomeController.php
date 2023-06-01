@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-
         $posts = Post::public ()->latest()->paginate();
 
         return view('welcome', compact('posts'));

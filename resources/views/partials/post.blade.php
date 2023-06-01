@@ -3,12 +3,12 @@
 <div class="card">
   <div class="row no-gutters">
     <div class="col-md-4 order-md-last">
-      <img class="img-fluid" src="{{ $post->image() }}" alt="...">
+      <img class="img-fluid rounded" src="{{ $post->image() }}" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">
         <a class="btn btn-link" href="{{ route('posts.public', $post) }}" role="button">
-          <h5 class="card-title">{{ $post->title }}</h5>
+          <h5 class="card-title">{{ $post->title }} {{ $post->id }}</h5>
         </a>
 
         <p class="card-text">

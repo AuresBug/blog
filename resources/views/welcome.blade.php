@@ -41,7 +41,7 @@
         @include('partials.post-empty')
       @endforelse
       {{-- </div> --}}
-      {{ $posts->links() }}
+      {{-- {{ $posts->links() }} --}}
 
     </div>
 

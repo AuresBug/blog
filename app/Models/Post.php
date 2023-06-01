@@ -75,7 +75,7 @@ class Post extends Model implements Auditable
         $media = $this->getMedia()->last();
 
         if (!$media) {
-            return 'https://picsum.photos/id/' . rand(1, 1000) . '/1920/1080';
+            return 'https://picsum.photos/id/' . rand(1, 1000) . '/640/480';
         }
 
         $image = $media->name ?: null;

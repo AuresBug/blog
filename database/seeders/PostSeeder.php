@@ -15,7 +15,7 @@ class PostSeeder extends Seeder
     public function run()
     {
         //
-        Post::factory(150)->create();
+        Post::factory(20)->create();
 
     }
 }
