@@ -26,7 +26,11 @@ class UpdatePostRequest extends FormRequest
         return [
             //
             'title'   => 'required|string',
-            'image'   => 'sometimes|mimes:png,jpg',
+            'image'   => [
+                'sometimes',
+                'mimes:png,jpg',
+                'dimensions:min_height=360,max_height=1080',
+            ],
             'excerpt' => 'required|string',
             'body'    => 'required|string',
             'status'  => 'required|string',

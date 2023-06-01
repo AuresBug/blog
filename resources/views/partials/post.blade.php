@@ -3,7 +3,7 @@
 <div class="card">
   <div class="row no-gutters">
     <div class="col-md-4 order-md-last">
-      <img class="img-fluid" src="https://picsum.photos/id/{{ rand(1, 1000) }}/640/480" alt="...">
+      <img class="img-fluid" src="{{ $post->image() }}" alt="...">
     </div>
     <div class="col-md-8">
       <div class="card-body">

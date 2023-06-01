@@ -74,7 +74,7 @@ class PostController extends Controller
 
         $post = Post::updateOrCreate(Arr::except($fields, $keys));
 
-        if ($request->hasFile('image') && !FilesController::saveFile($request->file('image'), $post, )) {
+        if ($request->hasFile('image') && !FilesController::saveFile($request->file('image'), $post, 'public')) {
             return redirect()->route('users.edit', $post)->with('toast_error', 'Algo salio mal. Intente de nuevo!');
         }
 
@@ -90,6 +90,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
+
         return redirect()->route('posts.edit', $post);
     }
 
@@ -117,7 +118,13 @@ class PostController extends Controller
     {
         $fields = $request->validated();
 
-        $post->update($fields);
+        [$keys, $values] = Arr::divide($request->allFiles());
+
+        $post->update(Arr::except($fields, $keys));
+
+        if ($request->hasFile('image') && !FilesController::saveFile($request->file('image'), $post, 'public')) {
+            return redirect()->route('users.edit', $post)->with('toast_error', 'Algo salio mal. Intente de nuevo!');
+        }
 
         return redirect()->route('posts.edit', $post)->with('toast_success', __('Saved.'));
 

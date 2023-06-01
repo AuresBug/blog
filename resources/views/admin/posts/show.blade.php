@@ -26,8 +26,7 @@
   <div class="row pt-4 ">
     <div class="col-md-9">
       <div class="card">
-        <img class="card-img-top img-fluid rounded-top" src="https://picsum.photos/id/{{ rand(1, 1000) }}/300/200"
-          alt="">
+        <img class="card-img-top img-fluid rounded-top" src=" {{ $post->image() }}" alt="">
         <div class="card-body">
 
           <p class="card-text">{{ $post->body }}</p>

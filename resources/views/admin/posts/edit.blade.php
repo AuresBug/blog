@@ -30,7 +30,12 @@
       <div class="card">
         <div class="card-body">
 
-          {!! Form::model($post, ['route' => ['posts.update', $post], 'method' => 'PUT', 'class' => 'form-horizontal']) !!}
+          {!! Form::model($post, [
+              'route' => ['posts.update', $post],
+              'method' => 'PUT',
+              'class' => 'form-horizontal',
+              'files' => true,
+          ]) !!}
 
           @include('admin.posts.includes.form')
 
@@ -44,6 +49,8 @@
 @stop
 
 @section('plugins.duallistbox', true)
+@section('plugins.bsCustomFileInput', true)
+
 
 
 @section('adminlte_js')
@@ -53,5 +60,13 @@
       selectedListLabel: 'Activos',
       moveOnSelect: false,
     });
+
+
+    $(document).ready(function() {
+      bsCustomFileInput.init()
+    })
   </script>
+
+
+
 @endsection

@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-9">
     <div class="card">
+
       <div class="card-body">
 
         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
@@ -10,12 +11,7 @@
         </div>
 
 
-        <div class="form-group{{ $errors->has('image') ? ' has-error' : '' }}">
-          {!! Form::label('image', 'Imagen') !!}
-          {!! Form::file('image', ['required' => 'required']) !!}
-          <p class="help-block">Help block text</p>
-          <small class="text-danger">{{ $errors->first('image') }}</small>
-        </div>
+
 
 
         <div class="form-group{{ $errors->has('excerpt') ? ' has-error' : '' }}">
@@ -36,10 +32,24 @@
 
 
   <div class="col-md-3">
-    <div class="card">
-      <div class="card-body">
+    <div class="card ">
+      <img class="card-img-top img-fluid rounded-top"
+        src="{{ isset($post) ? $post->image() : asset('https://picsum.photos/id/' . rand(1, 1000) . '/1920/1080') }}"
+        alt="">
 
-        <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }}">
+
+
+
+      <div class="card-body">
+        <div class="custom-file form-group{{ $errors->has('image') ? ' has-error' : '' }} ">
+          <input name='image' type="file" class="custom-file-input" id="customFileLangHTML">
+          <label class="custom-file-label" for="customFileLangHTML"
+            data-browse="{{ __('Browser') }}">{{ __('Select file') }}</label>
+          <p class="help-block">Help block text</p>
+          <small class="text-danger">{{ $errors->first('image') }}</small>
+        </div>
+
+        <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }} mt-4">
           {!! Form::label('status', 'Input label') !!}
           {!! Form::select('status', $statuses, null, [
               'id' => 'status',

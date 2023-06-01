@@ -396,7 +396,7 @@ return [
      */
 
     'plugins'                                 => [
-        'Datatables'  => [
+        'Datatables'        => [
             'active' => true,
             'files'  => [
                 [
@@ -416,7 +416,7 @@ return [
                 ],
             ],
         ],
-        'Select2'     => [
+        'Select2'           => [
             'active' => true,
             'files'  => [
                 [
@@ -431,7 +431,7 @@ return [
                 ],
             ],
         ],
-        'duallistbox' => [
+        'duallistbox'       => [
             'active' => false,
             'files'  => [
                 [
@@ -446,7 +446,17 @@ return [
                 ],
             ],
         ],
-        'Chartjs'     => [
+        'bsCustomFileInput' => [
+            'active' => false,
+            'files'  => [
+                [
+                    'type'     => 'js',
+                    'asset'    => true,
+                    'location' => 'vendor/bs-custom-file-input/bs-custom-file-input.min.js',
+                ],
+            ],
+        ],
+        'Chartjs'           => [
             'active' => false,
             'files'  => [
                 [
@@ -456,7 +466,7 @@ return [
                 ],
             ],
         ],
-        'Sweetalert2' => [
+        'Sweetalert2'       => [
             'active' => false,
             'files'  => [
                 [
@@ -466,7 +476,7 @@ return [
                 ],
             ],
         ],
-        'Pace'        => [
+        'Pace'              => [
             'active' => false,
             'files'  => [
                 [

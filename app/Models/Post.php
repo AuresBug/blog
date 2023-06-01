@@ -36,6 +36,13 @@ class Post extends Model implements Auditable
     protected $guarded = ['image'];
 
     /**
+     * @var array
+     */
+    protected $with = [
+        'media',
+    ];
+
+    /**
      * The "booted" method of the model.
      *
      * @return void
@@ -62,6 +69,23 @@ class Post extends Model implements Auditable
             $builder->where('created_by', auth()->id());
         });
     }
+
+    public function image()
+    {
+        $media = $this->getMedia()->last();
+
+        if (!$media) {
+            return 'https://picsum.photos/id/' . rand(1, 1000) . '/1920/1080';
+        }
+
+        $image = $media->name ?: null;
+
+        return route('getFile', [$image]);
+    }
+
+/* -------------------------------------------------------------------------- */
+/*                                   Scopes                                   */
+/* -------------------------------------------------------------------------- */
 
     /**
      * Scope a query to only include published posts

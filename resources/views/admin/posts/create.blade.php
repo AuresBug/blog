@@ -35,6 +35,7 @@
 @stop
 
 @section('plugins.duallistbox', true)
+@section('plugins.bsCustomFileInput', true)
 
 
 @section('adminlte_js')
@@ -44,5 +45,9 @@
       selectedListLabel: 'Activos',
       moveOnSelect: false,
     });
+
+    $(document).ready(function() {
+      bsCustomFileInput.init()
+    })
   </script>
 @endsection

@@ -8,21 +8,21 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="https://picsum.photos/id/{{ rand(1, 1000) }}/1080/300" class="d-block w-100" alt="...">
+          <img src="https://picsum.photos/id/{{ rand(1, 1000) }}/1080/300" class="d-block w-100 rounded" alt="...">
           <div class="carousel-caption d-none d-md-block rounded">
             <h2 class="text-bold text-light  text-shadow">First slide label</h2>
             <h5 class="text-light text-shadow">Some representative placeholder content for the first slide.</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://picsum.photos/id/{{ rand(1, 1000) }}/1080/300" class="d-block w-100" alt="...">
+          <img src="https://picsum.photos/id/{{ rand(1, 1000) }}/1080/300" class="d-block w-100 rounded" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h2 class="text-bold text-light text-shadow">Second slide label</h2>
             <h5 class="text-light text-shadow">Some representative placeholder content for the second slide.</h5>
           </div>
         </div>
         <div class="carousel-item">
-          <img src="https://picsum.photos/id/{{ rand(1, 1000) }}/1080/300" class="d-block w-100" alt="...">
+          <img src="https://picsum.photos/id/{{ rand(1, 1000) }}/1080/300" class="d-block w-100 rounded" alt="...">
           <div class="carousel-caption d-none d-md-block">
             <h2 class="text-bold text-light text-shadow">Third slide label</h2>
             <h5 class="text-light text-shadow">Some representative placeholder content for the third slide.</h5>
