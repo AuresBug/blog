@@ -1,14 +1,17 @@
 {{-- Card horizontal --}}
 
-<div class="card">
-  <div class="row no-gutters">
+<div class="card card-outline card-primary">
+  <div class="row p-2">
     <div class="col-md-4 order-md-last">
-      <img class="img-fluid rounded" src="{{ $post->image() }}" alt="...">
+      <a class="btn btn-link text-black" href="{{ route('posts.public', $post) }}" role="button">
+
+        <img class="img-thumbnail " src="{{ $post->image('card') }}" alt="...">
+      </a>
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <a class="btn btn-link" href="{{ route('posts.public', $post) }}" role="button">
-          <h5 class="card-title">{{ $post->title }} {{ $post->id }}</h5>
+        <a class="btn btn-link text-black" href="{{ route('posts.public', $post) }}" role="button">
+          <h3 class="text-left">{{ $post->title }}</h3>
         </a>
 
         <p class="card-text">
@@ -16,7 +19,9 @@
           <br>
           <a class="btn btn-link" href="{{ route('posts.public', $post) }}" role="button">{{ __('Read more...') }}</a>
         </p>
-        <p class="card-text"><small class="text-muted">Last updated {{ $post->created_at->diffForHumans() }}</small></p>
+        <p class="card-text"><small class="text-muted">Last updated: {{ $post->created_at->diffForHumans() }}</small>
+        </p>
+        <p class="card-text"><small class="text-muted">Created by: {{ $post->owner->name }}</small></p>
       </div>
     </div>
   </div>

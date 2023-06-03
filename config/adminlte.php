@@ -127,12 +127,12 @@ return [
     'classes_brand_text'                      => '',
     'classes_content_wrapper'                 => 'pb-5',
     'classes_content_header'                  => '',
-    'classes_content'                         => '',
+    'classes_content'                         => 'container-fluid',
     'classes_sidebar'                         => ' sidebar-dark-primary elevation-4',
     'classes_sidebar_nav'                     => '',
     'classes_topnav'                          => 'navbar-white navbar-light',
     'classes_topnav_nav'                      => 'navbar-expand-lg',
-    'classes_topnav_container'                => 'container',
+    'classes_topnav_container'                => 'container-fluid',
 
     /*
     |--------------------------------------------------------------------------

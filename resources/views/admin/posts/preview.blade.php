@@ -31,8 +31,7 @@
   <div class="row pt-4 ">
     <div class="col-md-9">
       <div class="card">
-        <img class="card-img-top img-fluid rounded-top" src="{{ $post->image() }}"
-          alt="">
+        <img class="card-img-top img-fluid rounded-top" src="{{ $post->image('standard') }}" alt="">
         <div class="card-body">
 
           <p class="card-text">{{ $post->body }}</p>

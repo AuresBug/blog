@@ -29,7 +29,7 @@ class StorePostRequest extends FormRequest
             'image'   => [
                 'sometimes',
                 'mimes:png,jpg',
-                'dimensions:min_height=360,max_height=1080,ratio=16/9',
+                'dimensions:min_height=360',
             ],
             'excerpt' => 'required|string',
             'body'    => 'required|string',

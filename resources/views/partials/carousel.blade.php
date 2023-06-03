@@ -2,32 +2,28 @@
   <div class="col">
     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
       <ol class="carousel-indicators">
-        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+
+        @for ($i = 0; $i < 3; $i++)
+          <li data-target="#carouselExampleCaptions" data-slide-to="{{ $i }}"
+            class=" {{ $i == 0 ? 'active' : '' }}"></li>
+        @endfor
       </ol>
       <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="https://picsum.photos/id/{{ rand(1, 1000) }}/1080/300" class="d-block w-100 rounded" alt="...">
-          <div class="carousel-caption d-none d-md-block rounded">
-            <h2 class="text-bold text-light  text-shadow">First slide label</h2>
-            <h5 class="text-light text-shadow">Some representative placeholder content for the first slide.</h5>
+        @foreach ($post_top6 as $post)
+          <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+            <a href="{{ route('posts.public', $post) }}">
+              <img src="{{ $post->image('carousel') }}" class="d-block w-100 rounded" alt="...">
+              <div class="carousel-caption d-none d-md-block rounded">
+                <h1 class="text-bold text-light  text-shadow ">{{ $post->title }}</h1>
+                <h5 class="text-light text-shadow">{{ $post->excerpt }}</h5>
+              </div>
+            </a>
           </div>
-        </div>
-        <div class="carousel-item">
-          <img src="https://picsum.photos/id/{{ rand(1, 1000) }}/1080/300" class="d-block w-100 rounded" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h2 class="text-bold text-light text-shadow">Second slide label</h2>
-            <h5 class="text-light text-shadow">Some representative placeholder content for the second slide.</h5>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <img src="https://picsum.photos/id/{{ rand(1, 1000) }}/1080/300" class="d-block w-100 rounded" alt="...">
-          <div class="carousel-caption d-none d-md-block">
-            <h2 class="text-bold text-light text-shadow">Third slide label</h2>
-            <h5 class="text-light text-shadow">Some representative placeholder content for the third slide.</h5>
-          </div>
-        </div>
+        @endforeach
+
+
+
+
       </div>
       <button class="carousel-control-prev" type="button" data-target="#carouselExampleCaptions" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

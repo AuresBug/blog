@@ -24,8 +24,16 @@ class HomeController extends Controller
      */
     public function welcome()
     {
-        $posts = Post::public ()->latest()->paginate();
 
-        return view('welcome', compact('posts'));
+        $post_top3 = Post::public ()->latest()->take(3)->get();
+        $post_top6 = Post::public ()->latest()->skip(3)->take(3)->get();
+
+        $posts = Post::public ()
+        // ->whereNotIn('id', Arr::collapse([$post_top3->modelKeys(), $post_top6->modelKeys()]))
+            ->latest()
+            ->paginate();
+
+        return view('welcome', compact('posts', 'post_top3', 'post_top6'));
     }
+
 }

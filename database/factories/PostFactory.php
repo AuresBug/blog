@@ -18,16 +18,16 @@ class PostFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->unique()->name();
+        $title = $this->faker->unique()->sentence();
 
         return [
             'title'      => $title,
             'slug'       => Str::slug($title),
             'excerpt'    => $this->faker->paragraph(3),
             'body'       => $this->faker->paragraph(10),
-            // 'status'     => $this->faker->randomElement(['DRAFT', 'PUBLISHED']),
-            'status'     => $this->faker->randomElement(['PUBLISHED', 'PUBLISHED']),
+            'status'     => $this->faker->randomElement(['DRAFT', 'PUBLISHED']),
             'created_by' => $this->faker->randomElement([User::factory()->create(), User::inRandomOrder()->first()]),
+            'created_at' => $this->faker->dateTimeBetween('-30 Days'),
         ];
     }
 }

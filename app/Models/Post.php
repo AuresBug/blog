@@ -70,17 +70,38 @@ class Post extends Model implements Auditable
         });
     }
 
-    public function image()
+    /**
+     * @param $conversion
+     */
+    public function image($conversion = null)
     {
+
+        $dimensions = [
+            'carousel' => '/640/240',
+            'card'     => '/640/480',
+            'standard' => '/854/480',
+            null       => '/640/480',
+        ];
+
         $media = $this->getMedia()->last();
 
         if (!$media) {
-            return 'https://picsum.photos/id/' . rand(1, 1000) . '/640/480';
+            return 'https://picsum.photos/id/' . rand(1, 1000) . $dimensions[$conversion];
         }
 
         $image = $media->name ?: null;
 
-        return route('getFile', [$image]);
+        return route('getFile', [$image, $conversion]);
+    }
+
+/* -------------------------------------------------------------------------- */
+/*                                 Media Library  Auresbug/media                                 */
+/* -------------------------------------------------------------------------- */
+
+    public function registerMediaGroups()
+    {
+        $this->addMediaGroup('default')
+            ->performConversions('carousel', 'card', 'standard');
     }
 
 /* -------------------------------------------------------------------------- */

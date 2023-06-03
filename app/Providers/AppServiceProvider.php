@@ -37,5 +37,17 @@ class AppServiceProvider extends ServiceProvider
             return $image->fit(64, 64);
         });
 
+        Conversion::register('carousel', function (Image $image) {
+            return $image->fit(640, 240);
+        });
+
+        Conversion::register('card', function (Image $image) {
+            return $image->fit(640, 480);
+        });
+
+        Conversion::register('standard', function (Image $image) {
+            return $image->fit(854, 480);
+        });
+
     }
 }
