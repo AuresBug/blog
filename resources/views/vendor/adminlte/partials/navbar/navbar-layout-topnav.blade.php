@@ -45,8 +45,7 @@
         @else
           @include('adminlte::partials.navbar.menu-item-logout-link')
         @endif
-      @else
-        @include('auth.partials.login-links')
+
       @endif
 
       {{-- Right sidebar toggler link --}}

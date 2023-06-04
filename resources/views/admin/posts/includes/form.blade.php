@@ -50,7 +50,7 @@
         </div>
 
         <div class="form-group{{ $errors->has('status') ? ' has-error' : '' }} mt-4">
-          {!! Form::label('status', 'Input label') !!}
+          {!! Form::label('status', 'Status') !!}
           {!! Form::select('status', $statuses, null, [
               'id' => 'status',
               'class' => 'form-control select2',

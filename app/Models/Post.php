@@ -41,6 +41,7 @@ class Post extends Model implements Auditable
      */
     protected $with = [
         'media',
+        'categories',
     ];
 
     /**

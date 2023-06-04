@@ -24,21 +24,14 @@
 @section('content')
 
 
-  <div class="row ">
-    <div class="col pt-4 ">
-      {{-- Nav --}}
-      <nav class="nav nav-pills nav-fill">
-        <a class="nav-link active" href="#">Active link</a>
-        <a class="nav-link" href="#">Link</a>
-        <a class="nav-link disabled" href="#">Disabled link</a>
-      </nav>
-    </div>
-  </div>
-  <hr>
-
 
   {{-- Cards --}}
   @include('partials.cards')
+
+  {{-- Nav --}}
+  @include('partials.navs')
+
+
 
 
   {{-- Carousel --}}
@@ -47,7 +40,7 @@
 
   {{-- Posts --}}
   <div class="row pt-4 ">
-    <div class="col-12 col-xl-9">
+    <div class="col-12 ">
 
       {{-- <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 "> --}}
       @forelse ($posts as $post)
@@ -62,6 +55,7 @@
 
 
     {{-- right column --}}
+    {{--
 
     <div class="col-xl-3  d-none d-xl-block">
       <div class="row sticky-top">
@@ -92,6 +86,9 @@
 
       </div>
     </div>
+
+
+    --}}
     {{-- End right column --}}
 
 

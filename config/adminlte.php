@@ -122,17 +122,17 @@ return [
     |
      */
 
-    'classes_body'                            => 'text-sm',
+    'classes_body'                            => 'text-sm ',
     'classes_brand'                           => '',
     'classes_brand_text'                      => '',
-    'classes_content_wrapper'                 => 'container-fluid pb-5',
-    'classes_content_header'                  => 'container-fluid',
-    'classes_content'                         => 'container-fluid',
+    'classes_content_wrapper'                 => 'pb-5',
+    'classes_content_header'                  => '',
+    'classes_content'                         => '',
     'classes_sidebar'                         => ' sidebar-dark-primary elevation-4',
     'classes_sidebar_nav'                     => '',
-    'classes_topnav'                          => 'navbar-white navbar-light',
+    'classes_topnav'                          => 'navbar-light',
     'classes_topnav_nav'                      => 'navbar-expand-lg',
-    'classes_topnav_container'                => 'container-fluid',
+    'classes_topnav_container'                => 'container',
 
     /*
     |--------------------------------------------------------------------------
@@ -227,16 +227,25 @@ return [
 
     'menu'                                    => [
 
-        // // Navbar items:
-        // [
-        //     'type'         => 'navbar-search',
-        //     'text'         => 'search',
-        //     'topnav_right' => true,
-        // ],
-        // [
-        //     'type'         => 'fullscreen-widget',
-        //     'topnav_right' => true,
-        // ],
+        // Navbar items:
+
+        [
+            'type' => 'navbar-search',
+            'text' => 'search', // Placeholder for the underlying input.
+            'topnav_right' => true, // Or "topnav => true" to place on the left.
+            'url' => 'navbar/search', // The url used to submit the data ('#' by default).
+            'method' => 'post', // 'get' or 'post' ('get' by default).
+            'input_name' => 'searchVal', // Name for the underlying input ('adminlteSearch' by default).
+            'id' => 'navbarSearch', // ID attribute for the underlying input (optional).
+        ],
+        [
+            'type'         => 'fullscreen-widget',
+            'topnav_right' => true,
+        ],
+        [
+            'type'         => 'darkmode-widget',
+            'topnav_right' => true, // Or "topnav => true" to place on the left.
+        ],
 
         // // Sidebar items:
         // [
