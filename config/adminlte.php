@@ -125,8 +125,8 @@ return [
     'classes_body'                            => 'text-sm',
     'classes_brand'                           => '',
     'classes_brand_text'                      => '',
-    'classes_content_wrapper'                 => 'pb-5',
-    'classes_content_header'                  => '',
+    'classes_content_wrapper'                 => 'container-fluid pb-5',
+    'classes_content_header'                  => 'container-fluid',
     'classes_content'                         => 'container-fluid',
     'classes_sidebar'                         => ' sidebar-dark-primary elevation-4',
     'classes_sidebar_nav'                     => '',
@@ -344,6 +344,12 @@ return [
                     'icon'  => 'fas fa-fw fa-user-shield',
                 ],
             ],
+
+        ],
+        [
+            'text'  => 'home',
+            'route' => 'home',
+            'icon'  => 'fas fa-fw fa-home',
 
         ],
         [

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\EnumPostStatuses;
+use App\Models\Category;
 use Auresbug\Media\HasMedia;
 use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -142,6 +143,14 @@ class Post extends Model implements Auditable
     public function owner()
     {
         return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 
 /* -------------------------------------------------------------------------- */

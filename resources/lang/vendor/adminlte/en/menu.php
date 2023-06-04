@@ -21,4 +21,5 @@ return [
     'users'            => 'Usuarios',
     'posts'            => 'My posts',
     'new-post'         => 'Create new post',
+    'home'             => 'Home',
 ];

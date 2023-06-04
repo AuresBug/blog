@@ -24,6 +24,19 @@
 @section('content')
 
 
+  <div class="row ">
+    <div class="col pt-4 ">
+      {{-- Nav --}}
+      <nav class="nav nav-pills nav-fill">
+        <a class="nav-link active" href="#">Active link</a>
+        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link disabled" href="#">Disabled link</a>
+      </nav>
+    </div>
+  </div>
+  <hr>
+
+
   {{-- Cards --}}
   @include('partials.cards')
 

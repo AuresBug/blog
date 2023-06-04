@@ -57,8 +57,8 @@ Route::prefix('admin')->middleware('auth', 'verified')->group(function () {
 // Public
 Route::get('{post}', [PostController::class, 'public'])->name('posts.public');
 
-Route::fallback(function () {
+// Route::fallback(function () {
 
-    return redirect()->route('home')->with('toast_errors', 'Algo salio mal!.');
+//     return redirect()->route('home')->with('toast_errors', 'Algo salio mal!.');
 
-});
+// });

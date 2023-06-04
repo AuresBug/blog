@@ -4,6 +4,6 @@
       width="48">
   </div>
   <div class="col align-self-end">
-    <a class="btn btn-link" href="{{ route('users.show', $user) }}" role="button">{{ $user->name }}</a>
+    <a class="card-link" href="{{ route('users.show', $user) }}" role="button">{{ $user->name }}</a>
   </div>
 </div>

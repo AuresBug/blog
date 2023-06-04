@@ -19,9 +19,17 @@
           <br>
           <a class="btn btn-link" href="{{ route('posts.public', $post) }}" role="button">{{ __('Read more...') }}</a>
         </p>
-        <p class="card-text"><small class="text-muted">Last updated: {{ $post->created_at->diffForHumans() }}</small>
+        <p class="card-text">
+          <small class="text-muted">Last updated: {{ $post->created_at->diffForHumans() }} </small>
         </p>
-        <p class="card-text"><small class="text-muted">Created by: {{ $post->owner->name }}</small></p>
+        <p class="card-text">
+          <small class="text-muted">{{ __('Categories:') }}</small> <br>
+          @foreach ($post->categories as $category)
+            <a class="btn btn-outline-primary btn-sm" href="#" role="button">
+              {{ $category->name }}
+            </a>
+          @endforeach
+        </p>
       </div>
     </div>
   </div>

@@ -21,5 +21,6 @@ return [
     'users'            => 'Usuarios',
     'posts'            => 'Mis entradas',
     'new-post'         => 'Crear nueva entrada',
+    'home'             => 'Inicio',
 
 ];

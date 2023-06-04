@@ -20,9 +20,10 @@ class RolesAndPermissionsSeeder extends Seeder
         app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
 
         $permissions = [
-            'users' => ['index', 'create', 'show', 'edit', 'destroy'],
-            'roles' => ['index', 'create', 'show', 'edit', 'destroy'],
-            'posts' => ['index', 'create', 'show', 'edit', 'destroy'],
+            'users'      => ['index', 'create', 'show', 'edit', 'destroy'],
+            'roles'      => ['index', 'create', 'show', 'edit', 'destroy'],
+            'posts'      => ['index', 'create', 'show', 'edit', 'destroy'],
+            'categories' => ['index', 'create', 'show', 'edit', 'destroy'],
         ];
 
         foreach ($permissions as $model => $methods) {
