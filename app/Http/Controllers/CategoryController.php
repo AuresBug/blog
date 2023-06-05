@@ -2,12 +2,23 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreCategoryRequest;
-use App\Http\Requests\UpdateCategoryRequest;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\StoreCategoryRequest;
+use App\Http\Requests\Category\UpdateCategoryRequest;
 use App\Models\Category;
+use Freshbitsweb\Laratables\Laratables;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
+
+    public function __construct()
+    {
+
+        $this->authorizeResource(Category::class, 'category');
+
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +26,18 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.categories.index');
+    }
+
+    /**
+     * @param Type $var
+     */
+    public function getIndexTable()
+    {
+        $this->authorize('viewAny', Category::class);
+
+        return Laratables::recordsOf(Category::class);
+
     }
 
     /**
@@ -25,62 +47,74 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.categories.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreCategoryRequest  $request
+     * @param  \Illuminate\Http\Request    $request
      * @return \Illuminate\Http\Response
      */
     public function store(StoreCategoryRequest $request)
     {
-        //
+        $fields = $request->validated();
+
+        $category = Category::updateOrCreate($fields);
+
+        return redirect()->route('categories.edit', $category)->with('toast_success', 'Registro guardado.');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  int                         $id
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
     {
-        //
+        return redirect()->route('categories.edit', $category);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  int                         $id
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
     {
-        //
+        return view('admin.categories.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateCategoryRequest  $request
-     * @param  \App\Models\Category  $category
+     * @param  \Illuminate\Http\Request    $request
+     * @param  int                         $id
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateCategoryRequest $request, Category $category)
     {
-        //
+        $fields = $request->validated();
+
+        $category->update($fields);
+
+        return redirect()->route('categories.edit', $category)->with('toast_success', 'Registro actualizado.');
+
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  int                         $id
      * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('toast_success', 'Registro eliminado.');
     }
 }

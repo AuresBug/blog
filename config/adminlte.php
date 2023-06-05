@@ -352,6 +352,12 @@ return [
                     'route' => 'roles.index',
                     'icon'  => 'fas fa-fw fa-user-shield',
                 ],
+                [
+                    'text'  => 'categories',
+                    'can'   => 'categories.index',
+                    'route' => 'categories.index',
+                    'icon'  => 'fas fa-fw fa-list',
+                ],
             ],
 
         ],

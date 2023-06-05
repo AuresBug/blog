@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\SocialiteController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -49,8 +50,11 @@ Route::prefix('admin')->middleware('auth', 'verified')->group(function () {
     // Posts
     Route::get('posts/get-index-table', [PostController::class, 'getIndexTable'])->name('posts.getIndexTable');
     Route::resource('posts', PostController::class);
-
     Route::get('posts/{post}/preview', [PostController::class, 'preview'])->name('posts.preview');
+
+    // Categories
+    Route::get('categories/get-index-table', [CategoryController::class, 'getIndexTable'])->name('categories.getIndexTable');
+    Route::resource('categories', CategoryController::class);
 
 });
 
